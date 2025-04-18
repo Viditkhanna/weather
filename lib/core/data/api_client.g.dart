@@ -9,7 +9,9 @@ part of 'api_client.dart';
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
 
 class _ApiClient implements ApiClient {
-  _ApiClient(this._dio, {this.baseUrl, this.errorLogger});
+  _ApiClient(this._dio, {this.baseUrl, this.errorLogger}) {
+    baseUrl ??= 'https://api.openweathermap.org';
+  }
 
   final Dio _dio;
 
@@ -18,26 +20,37 @@ class _ApiClient implements ApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<dynamic> getWeather({
+  Future<WeatherResponse> getWeather({
     String city = 'Berlin',
     String unit = 'metric',
+    int count = Constant.daysCountToDisplay * 8,
   }) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{r'q': city, r'unit': unit};
+    final queryParameters = <String, dynamic>{
+      r'q': city,
+      r'unit': unit,
+      r'cnt': count,
+    };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<dynamic>(
+    final _options = _setStreamType<WeatherResponse>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/data/2.5/weather',
+            '/data/2.5/forecast',
             queryParameters: queryParameters,
             data: _data,
           )
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
-    final _result = await _dio.fetch(_options);
-    final _value = _result.data;
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late WeatherResponse _value;
+    try {
+      _value = WeatherResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
     return _value;
   }
 
