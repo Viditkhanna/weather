@@ -164,7 +164,7 @@ as List<WeatherList>,
 /// @nodoc
 mixin _$WeatherList {
 
- int get dt; Main get main; List<Weather> get weather; Wind get wind; String get dtTxt;
+ int get dt; Main get main; List<Weather> get weather; Wind get wind;@JsonKey(name: 'dt_txt') DateTime get dateTime;
 /// Create a copy of WeatherList
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -177,16 +177,16 @@ $WeatherListCopyWith<WeatherList> get copyWith => _$WeatherListCopyWithImpl<Weat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherList&&(identical(other.dt, dt) || other.dt == dt)&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other.weather, weather)&&(identical(other.wind, wind) || other.wind == wind)&&(identical(other.dtTxt, dtTxt) || other.dtTxt == dtTxt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherList&&(identical(other.dt, dt) || other.dt == dt)&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other.weather, weather)&&(identical(other.wind, wind) || other.wind == wind)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,dt,main,const DeepCollectionEquality().hash(weather),wind,dtTxt);
+int get hashCode => Object.hash(runtimeType,dt,main,const DeepCollectionEquality().hash(weather),wind,dateTime);
 
 @override
 String toString() {
-  return 'WeatherList(dt: $dt, main: $main, weather: $weather, wind: $wind, dtTxt: $dtTxt)';
+  return 'WeatherList(dt: $dt, main: $main, weather: $weather, wind: $wind, dateTime: $dateTime)';
 }
 
 
@@ -197,7 +197,7 @@ abstract mixin class $WeatherListCopyWith<$Res>  {
   factory $WeatherListCopyWith(WeatherList value, $Res Function(WeatherList) _then) = _$WeatherListCopyWithImpl;
 @useResult
 $Res call({
- int dt, Main main, List<Weather> weather, Wind wind, String dtTxt
+ int dt, Main main, List<Weather> weather, Wind wind,@JsonKey(name: 'dt_txt') DateTime dateTime
 });
 
 
@@ -214,14 +214,14 @@ class _$WeatherListCopyWithImpl<$Res>
 
 /// Create a copy of WeatherList
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? dt = null,Object? main = null,Object? weather = null,Object? wind = null,Object? dtTxt = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? dt = null,Object? main = null,Object? weather = null,Object? wind = null,Object? dateTime = null,}) {
   return _then(_self.copyWith(
 dt: null == dt ? _self.dt : dt // ignore: cast_nullable_to_non_nullable
 as int,main: null == main ? _self.main : main // ignore: cast_nullable_to_non_nullable
 as Main,weather: null == weather ? _self.weather : weather // ignore: cast_nullable_to_non_nullable
 as List<Weather>,wind: null == wind ? _self.wind : wind // ignore: cast_nullable_to_non_nullable
-as Wind,dtTxt: null == dtTxt ? _self.dtTxt : dtTxt // ignore: cast_nullable_to_non_nullable
-as String,
+as Wind,dateTime: null == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
+as DateTime,
   ));
 }
 /// Create a copy of WeatherList
@@ -250,7 +250,7 @@ $WindCopyWith<$Res> get wind {
 @JsonSerializable()
 
 class _WeatherList implements WeatherList {
-   _WeatherList({required this.dt, required this.main, required final  List<Weather> weather, required this.wind, required this.dtTxt}): _weather = weather;
+   _WeatherList({required this.dt, required this.main, required final  List<Weather> weather, required this.wind, @JsonKey(name: 'dt_txt') required this.dateTime}): _weather = weather;
   factory _WeatherList.fromJson(Map<String, dynamic> json) => _$WeatherListFromJson(json);
 
 @override final  int dt;
@@ -263,7 +263,7 @@ class _WeatherList implements WeatherList {
 }
 
 @override final  Wind wind;
-@override final  String dtTxt;
+@override@JsonKey(name: 'dt_txt') final  DateTime dateTime;
 
 /// Create a copy of WeatherList
 /// with the given fields replaced by the non-null parameter values.
@@ -278,16 +278,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherList&&(identical(other.dt, dt) || other.dt == dt)&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other._weather, _weather)&&(identical(other.wind, wind) || other.wind == wind)&&(identical(other.dtTxt, dtTxt) || other.dtTxt == dtTxt));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherList&&(identical(other.dt, dt) || other.dt == dt)&&(identical(other.main, main) || other.main == main)&&const DeepCollectionEquality().equals(other._weather, _weather)&&(identical(other.wind, wind) || other.wind == wind)&&(identical(other.dateTime, dateTime) || other.dateTime == dateTime));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,dt,main,const DeepCollectionEquality().hash(_weather),wind,dtTxt);
+int get hashCode => Object.hash(runtimeType,dt,main,const DeepCollectionEquality().hash(_weather),wind,dateTime);
 
 @override
 String toString() {
-  return 'WeatherList(dt: $dt, main: $main, weather: $weather, wind: $wind, dtTxt: $dtTxt)';
+  return 'WeatherList(dt: $dt, main: $main, weather: $weather, wind: $wind, dateTime: $dateTime)';
 }
 
 
@@ -298,7 +298,7 @@ abstract mixin class _$WeatherListCopyWith<$Res> implements $WeatherListCopyWith
   factory _$WeatherListCopyWith(_WeatherList value, $Res Function(_WeatherList) _then) = __$WeatherListCopyWithImpl;
 @override @useResult
 $Res call({
- int dt, Main main, List<Weather> weather, Wind wind, String dtTxt
+ int dt, Main main, List<Weather> weather, Wind wind,@JsonKey(name: 'dt_txt') DateTime dateTime
 });
 
 
@@ -315,14 +315,14 @@ class __$WeatherListCopyWithImpl<$Res>
 
 /// Create a copy of WeatherList
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? dt = null,Object? main = null,Object? weather = null,Object? wind = null,Object? dtTxt = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? dt = null,Object? main = null,Object? weather = null,Object? wind = null,Object? dateTime = null,}) {
   return _then(_WeatherList(
 dt: null == dt ? _self.dt : dt // ignore: cast_nullable_to_non_nullable
 as int,main: null == main ? _self.main : main // ignore: cast_nullable_to_non_nullable
 as Main,weather: null == weather ? _self._weather : weather // ignore: cast_nullable_to_non_nullable
 as List<Weather>,wind: null == wind ? _self.wind : wind // ignore: cast_nullable_to_non_nullable
-as Wind,dtTxt: null == dtTxt ? _self.dtTxt : dtTxt // ignore: cast_nullable_to_non_nullable
-as String,
+as Wind,dateTime: null == dateTime ? _self.dateTime : dateTime // ignore: cast_nullable_to_non_nullable
+as DateTime,
   ));
 }
 

@@ -25,7 +25,7 @@ sealed class WeatherList with _$WeatherList {
     required Main main,
     required List<Weather> weather,
     required Wind wind,
-    required String dtTxt,
+    @JsonKey(name: 'dt_txt') required DateTime dateTime,
   }) = _WeatherList;
 
   factory WeatherList.fromJson(Map<String, dynamic> json) =>

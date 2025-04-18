@@ -33,7 +33,7 @@ _WeatherList _$WeatherListFromJson(Map<String, dynamic> json) => _WeatherList(
           .map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
   wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
-  dtTxt: json['dt_txt'] as String,
+  dateTime: DateTime.parse(json['dt_txt'] as String),
 );
 
 Map<String, dynamic> _$WeatherListToJson(_WeatherList instance) =>
@@ -42,7 +42,7 @@ Map<String, dynamic> _$WeatherListToJson(_WeatherList instance) =>
       'main': instance.main.toJson(),
       'weather': instance.weather.map((e) => e.toJson()).toList(),
       'wind': instance.wind.toJson(),
-      'dt_txt': instance.dtTxt,
+      'dt_txt': instance.dateTime.toIso8601String(),
     };
 
 _Main _$MainFromJson(Map<String, dynamic> json) => _Main(
