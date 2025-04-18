@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather/feature/weather_home/model/weather.dart';
 import 'package:weather/feature/weather_home/repository/weather_home_repository.dart';
 
 final weatherHomeNotifierProvider = Provider.autoDispose((ref) {
@@ -12,7 +14,8 @@ class WeatherHomeNotifier {
 
   WeatherHomeNotifier({required this.weatherHomeRepository});
 
-  Future<void> _init() async {
-    await weatherHomeRepository.getWeather();
+  Future<List<WeatherList>> _init() async {
+    final weatherResponse = await weatherHomeRepository.getWeather();
+    return weatherResponse;
   }
 }
