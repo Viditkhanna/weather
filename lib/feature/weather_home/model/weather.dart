@@ -1,6 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:weather/core/converters/date_time_converter.dart';
 
 part 'weather.freezed.dart';
 part 'weather.g.dart';
@@ -25,7 +26,9 @@ sealed class WeatherList with _$WeatherList {
     required Main main,
     required List<Weather> weather,
     required Wind wind,
-    @JsonKey(name: 'dt_txt') required DateTime dateTime,
+    @CustomDateTimeConverter()
+    @JsonKey(name: 'dt_txt')
+    required DateTime dateTime,
   }) = _WeatherList;
 
   factory WeatherList.fromJson(Map<String, dynamic> json) =>

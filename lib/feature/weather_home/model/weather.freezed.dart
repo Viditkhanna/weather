@@ -164,7 +164,7 @@ as List<WeatherList>,
 /// @nodoc
 mixin _$WeatherList {
 
- int get dt; Main get main; List<Weather> get weather; Wind get wind;@JsonKey(name: 'dt_txt') DateTime get dateTime;
+ int get dt; Main get main; List<Weather> get weather; Wind get wind;@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime get dateTime;
 /// Create a copy of WeatherList
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -197,7 +197,7 @@ abstract mixin class $WeatherListCopyWith<$Res>  {
   factory $WeatherListCopyWith(WeatherList value, $Res Function(WeatherList) _then) = _$WeatherListCopyWithImpl;
 @useResult
 $Res call({
- int dt, Main main, List<Weather> weather, Wind wind,@JsonKey(name: 'dt_txt') DateTime dateTime
+ int dt, Main main, List<Weather> weather, Wind wind,@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime dateTime
 });
 
 
@@ -250,7 +250,7 @@ $WindCopyWith<$Res> get wind {
 @JsonSerializable()
 
 class _WeatherList implements WeatherList {
-   _WeatherList({required this.dt, required this.main, required final  List<Weather> weather, required this.wind, @JsonKey(name: 'dt_txt') required this.dateTime}): _weather = weather;
+   _WeatherList({required this.dt, required this.main, required final  List<Weather> weather, required this.wind, @CustomDateTimeConverter()@JsonKey(name: 'dt_txt') required this.dateTime}): _weather = weather;
   factory _WeatherList.fromJson(Map<String, dynamic> json) => _$WeatherListFromJson(json);
 
 @override final  int dt;
@@ -263,7 +263,7 @@ class _WeatherList implements WeatherList {
 }
 
 @override final  Wind wind;
-@override@JsonKey(name: 'dt_txt') final  DateTime dateTime;
+@override@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') final  DateTime dateTime;
 
 /// Create a copy of WeatherList
 /// with the given fields replaced by the non-null parameter values.
@@ -298,7 +298,7 @@ abstract mixin class _$WeatherListCopyWith<$Res> implements $WeatherListCopyWith
   factory _$WeatherListCopyWith(_WeatherList value, $Res Function(_WeatherList) _then) = __$WeatherListCopyWithImpl;
 @override @useResult
 $Res call({
- int dt, Main main, List<Weather> weather, Wind wind,@JsonKey(name: 'dt_txt') DateTime dateTime
+ int dt, Main main, List<Weather> weather, Wind wind,@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime dateTime
 });
 
 
