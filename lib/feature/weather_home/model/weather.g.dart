@@ -11,39 +11,44 @@ _WeatherResponse _$WeatherResponseFromJson(Map<String, dynamic> json) =>
       cod: json['cod'] as String,
       message: (json['message'] as num).toInt(),
       cnt: (json['cnt'] as num).toInt(),
-      list:
-          (json['list'] as List<dynamic>)
-              .map((e) => WeatherList.fromJson(e as Map<String, dynamic>))
+      weatherReports:
+          (json['weather_reports'] as List<dynamic>)
+              .map((e) => WeatherReport.fromJson(e as Map<String, dynamic>))
               .toList(),
     );
 
-Map<String, dynamic> _$WeatherResponseToJson(_WeatherResponse instance) =>
-    <String, dynamic>{
-      'cod': instance.cod,
-      'message': instance.message,
-      'cnt': instance.cnt,
-      'list': instance.list.map((e) => e.toJson()).toList(),
-    };
+Map<String, dynamic> _$WeatherResponseToJson(
+  _WeatherResponse instance,
+) => <String, dynamic>{
+  'cod': instance.cod,
+  'message': instance.message,
+  'cnt': instance.cnt,
+  'weather_reports': instance.weatherReports.map((e) => e.toJson()).toList(),
+};
 
-_WeatherList _$WeatherListFromJson(Map<String, dynamic> json) => _WeatherList(
-  dt: (json['dt'] as num).toInt(),
-  main: Main.fromJson(json['main'] as Map<String, dynamic>),
-  weather:
-      (json['weather'] as List<dynamic>)
-          .map((e) => Weather.fromJson(e as Map<String, dynamic>))
-          .toList(),
-  wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
-  dateTime: const CustomDateTimeConverter().fromJson(json['dt_txt'] as String),
-);
+_WeatherReport _$WeatherReportFromJson(Map<String, dynamic> json) =>
+    _WeatherReport(
+      dt: (json['dt'] as num).toInt(),
+      main: Main.fromJson(json['main'] as Map<String, dynamic>),
+      weatherDetails:
+          (json['weather_details'] as List<dynamic>)
+              .map((e) => WeatherDetail.fromJson(e as Map<String, dynamic>))
+              .toList(),
+      wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
+      dateTime: const CustomDateTimeConverter().fromJson(
+        json['dt_txt'] as String,
+      ),
+    );
 
-Map<String, dynamic> _$WeatherListToJson(_WeatherList instance) =>
-    <String, dynamic>{
-      'dt': instance.dt,
-      'main': instance.main.toJson(),
-      'weather': instance.weather.map((e) => e.toJson()).toList(),
-      'wind': instance.wind.toJson(),
-      'dt_txt': const CustomDateTimeConverter().toJson(instance.dateTime),
-    };
+Map<String, dynamic> _$WeatherReportToJson(
+  _WeatherReport instance,
+) => <String, dynamic>{
+  'dt': instance.dt,
+  'main': instance.main.toJson(),
+  'weather_details': instance.weatherDetails.map((e) => e.toJson()).toList(),
+  'wind': instance.wind.toJson(),
+  'dt_txt': const CustomDateTimeConverter().toJson(instance.dateTime),
+};
 
 _Main _$MainFromJson(Map<String, dynamic> json) => _Main(
   temp: (json['temp'] as num).toDouble(),
@@ -57,19 +62,21 @@ Map<String, dynamic> _$MainToJson(_Main instance) => <String, dynamic>{
   'humidity': instance.humidity,
 };
 
-_Weather _$WeatherFromJson(Map<String, dynamic> json) => _Weather(
-  id: (json['id'] as num).toInt(),
-  main: json['main'] as String,
-  description: json['description'] as String,
-  icon: json['icon'] as String,
-);
+_WeatherDetail _$WeatherDetailFromJson(Map<String, dynamic> json) =>
+    _WeatherDetail(
+      id: (json['id'] as num).toInt(),
+      main: json['main'] as String,
+      description: json['description'] as String,
+      icon: json['icon'] as String,
+    );
 
-Map<String, dynamic> _$WeatherToJson(_Weather instance) => <String, dynamic>{
-  'id': instance.id,
-  'main': instance.main,
-  'description': instance.description,
-  'icon': instance.icon,
-};
+Map<String, dynamic> _$WeatherDetailToJson(_WeatherDetail instance) =>
+    <String, dynamic>{
+      'id': instance.id,
+      'main': instance.main,
+      'description': instance.description,
+      'icon': instance.icon,
+    };
 
 _Wind _$WindFromJson(Map<String, dynamic> json) =>
     _Wind(speed: (json['speed'] as num).toDouble());

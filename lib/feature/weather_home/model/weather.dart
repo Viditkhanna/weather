@@ -12,7 +12,7 @@ sealed class WeatherResponse with _$WeatherResponse {
     required String cod,
     required int message,
     required int cnt,
-    required List<WeatherList> list,
+    required List<WeatherReport> weatherReports,
   }) = _WeatherResponse;
 
   factory WeatherResponse.fromJson(Map<String, dynamic> json) =>
@@ -20,19 +20,19 @@ sealed class WeatherResponse with _$WeatherResponse {
 }
 
 @freezed
-sealed class WeatherList with _$WeatherList {
-  factory WeatherList({
+sealed class WeatherReport with _$WeatherReport {
+  factory WeatherReport({
     required int dt,
     required Main main,
-    required List<Weather> weather,
+    required List<WeatherDetail> weatherDetails,
     required Wind wind,
     @CustomDateTimeConverter()
     @JsonKey(name: 'dt_txt')
     required DateTime dateTime,
-  }) = _WeatherList;
+  }) = _WeatherReport;
 
-  factory WeatherList.fromJson(Map<String, dynamic> json) =>
-      _$WeatherListFromJson(json);
+  factory WeatherReport.fromJson(Map<String, dynamic> json) =>
+      _$WeatherReportFromJson(json);
 }
 
 @freezed
@@ -47,16 +47,16 @@ sealed class Main with _$Main {
 }
 
 @freezed
-sealed class Weather with _$Weather {
-  factory Weather({
+sealed class WeatherDetail with _$WeatherDetail {
+  factory WeatherDetail({
     required int id,
     required String main,
     required String description,
     required String icon,
-  }) = _Weather;
+  }) = _WeatherDetail;
 
-  factory Weather.fromJson(Map<String, dynamic> json) =>
-      _$WeatherFromJson(json);
+  factory WeatherDetail.fromJson(Map<String, dynamic> json) =>
+      _$WeatherDetailFromJson(json);
 }
 
 @freezed

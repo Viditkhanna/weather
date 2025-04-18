@@ -12,17 +12,17 @@ class WeatherHomeRepository {
 
   WeatherHomeRepository({required this.apiClient});
 
-  Future<List<WeatherList>> getWeather() async {
-    final weatherList = <WeatherList>[];
+  Future<List<WeatherReport>> getWeather() async {
+    final weatherReports = <WeatherReport>[];
     final weatherResponse = await apiClient.getWeather();
 
-    for (var weatherItem in weatherResponse.list) {
-      if (!weatherList.any(
+    for (var weatherItem in weatherResponse.weatherReports) {
+      if (!weatherReports.any(
         (e) => DateUtils.isSameDay(e.dateTime, weatherItem.dateTime),
       )) {
-        weatherList.add(weatherItem);
+        weatherReports.add(weatherItem);
       }
     }
-    return weatherList;
+    return weatherReports;
   }
 }
