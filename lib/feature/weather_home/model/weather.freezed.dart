@@ -16,7 +16,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WeatherResponse {
 
- String get cod; int get message; int get cnt; List<WeatherReport> get weatherReports;
+ String get cod; int get message; int get cnt;@JsonKey(name: 'list') List<WeatherReport> get weatherReports;
 /// Create a copy of WeatherResponse
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -49,7 +49,7 @@ abstract mixin class $WeatherResponseCopyWith<$Res>  {
   factory $WeatherResponseCopyWith(WeatherResponse value, $Res Function(WeatherResponse) _then) = _$WeatherResponseCopyWithImpl;
 @useResult
 $Res call({
- String cod, int message, int cnt, List<WeatherReport> weatherReports
+ String cod, int message, int cnt,@JsonKey(name: 'list') List<WeatherReport> weatherReports
 });
 
 
@@ -83,14 +83,14 @@ as List<WeatherReport>,
 @JsonSerializable()
 
 class _WeatherResponse implements WeatherResponse {
-   _WeatherResponse({required this.cod, required this.message, required this.cnt, required final  List<WeatherReport> weatherReports}): _weatherReports = weatherReports;
+   _WeatherResponse({required this.cod, required this.message, required this.cnt, @JsonKey(name: 'list') required final  List<WeatherReport> weatherReports}): _weatherReports = weatherReports;
   factory _WeatherResponse.fromJson(Map<String, dynamic> json) => _$WeatherResponseFromJson(json);
 
 @override final  String cod;
 @override final  int message;
 @override final  int cnt;
  final  List<WeatherReport> _weatherReports;
-@override List<WeatherReport> get weatherReports {
+@override@JsonKey(name: 'list') List<WeatherReport> get weatherReports {
   if (_weatherReports is EqualUnmodifiableListView) return _weatherReports;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_weatherReports);
@@ -130,7 +130,7 @@ abstract mixin class _$WeatherResponseCopyWith<$Res> implements $WeatherResponse
   factory _$WeatherResponseCopyWith(_WeatherResponse value, $Res Function(_WeatherResponse) _then) = __$WeatherResponseCopyWithImpl;
 @override @useResult
 $Res call({
- String cod, int message, int cnt, List<WeatherReport> weatherReports
+ String cod, int message, int cnt,@JsonKey(name: 'list') List<WeatherReport> weatherReports
 });
 
 
@@ -164,7 +164,7 @@ as List<WeatherReport>,
 /// @nodoc
 mixin _$WeatherReport {
 
- int get dt; Main get main; List<WeatherDetail> get weatherDetails; Wind get wind;@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime get dateTime;
+ int get dt; Main get main;@JsonKey(name: 'weather') List<WeatherDetail> get weatherDetails; Wind get wind;@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime get dateTime;
 /// Create a copy of WeatherReport
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -197,7 +197,7 @@ abstract mixin class $WeatherReportCopyWith<$Res>  {
   factory $WeatherReportCopyWith(WeatherReport value, $Res Function(WeatherReport) _then) = _$WeatherReportCopyWithImpl;
 @useResult
 $Res call({
- int dt, Main main, List<WeatherDetail> weatherDetails, Wind wind,@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime dateTime
+ int dt, Main main,@JsonKey(name: 'weather') List<WeatherDetail> weatherDetails, Wind wind,@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime dateTime
 });
 
 
@@ -250,13 +250,13 @@ $WindCopyWith<$Res> get wind {
 @JsonSerializable()
 
 class _WeatherReport implements WeatherReport {
-   _WeatherReport({required this.dt, required this.main, required final  List<WeatherDetail> weatherDetails, required this.wind, @CustomDateTimeConverter()@JsonKey(name: 'dt_txt') required this.dateTime}): _weatherDetails = weatherDetails;
+   _WeatherReport({required this.dt, required this.main, @JsonKey(name: 'weather') required final  List<WeatherDetail> weatherDetails, required this.wind, @CustomDateTimeConverter()@JsonKey(name: 'dt_txt') required this.dateTime}): _weatherDetails = weatherDetails;
   factory _WeatherReport.fromJson(Map<String, dynamic> json) => _$WeatherReportFromJson(json);
 
 @override final  int dt;
 @override final  Main main;
  final  List<WeatherDetail> _weatherDetails;
-@override List<WeatherDetail> get weatherDetails {
+@override@JsonKey(name: 'weather') List<WeatherDetail> get weatherDetails {
   if (_weatherDetails is EqualUnmodifiableListView) return _weatherDetails;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_weatherDetails);
@@ -298,7 +298,7 @@ abstract mixin class _$WeatherReportCopyWith<$Res> implements $WeatherReportCopy
   factory _$WeatherReportCopyWith(_WeatherReport value, $Res Function(_WeatherReport) _then) = __$WeatherReportCopyWithImpl;
 @override @useResult
 $Res call({
- int dt, Main main, List<WeatherDetail> weatherDetails, Wind wind,@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime dateTime
+ int dt, Main main,@JsonKey(name: 'weather') List<WeatherDetail> weatherDetails, Wind wind,@CustomDateTimeConverter()@JsonKey(name: 'dt_txt') DateTime dateTime
 });
 
 
@@ -351,7 +351,7 @@ $WindCopyWith<$Res> get wind {
 /// @nodoc
 mixin _$Main {
 
- double get temp; int get pressure; int get humidity;
+@JsonKey(name: 'temp') double get tempInCelcius; int get pressure; int get humidity;
 /// Create a copy of Main
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -364,16 +364,16 @@ $MainCopyWith<Main> get copyWith => _$MainCopyWithImpl<Main>(this as Main, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Main&&(identical(other.temp, temp) || other.temp == temp)&&(identical(other.pressure, pressure) || other.pressure == pressure)&&(identical(other.humidity, humidity) || other.humidity == humidity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Main&&(identical(other.tempInCelcius, tempInCelcius) || other.tempInCelcius == tempInCelcius)&&(identical(other.pressure, pressure) || other.pressure == pressure)&&(identical(other.humidity, humidity) || other.humidity == humidity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,temp,pressure,humidity);
+int get hashCode => Object.hash(runtimeType,tempInCelcius,pressure,humidity);
 
 @override
 String toString() {
-  return 'Main(temp: $temp, pressure: $pressure, humidity: $humidity)';
+  return 'Main(tempInCelcius: $tempInCelcius, pressure: $pressure, humidity: $humidity)';
 }
 
 
@@ -384,7 +384,7 @@ abstract mixin class $MainCopyWith<$Res>  {
   factory $MainCopyWith(Main value, $Res Function(Main) _then) = _$MainCopyWithImpl;
 @useResult
 $Res call({
- double temp, int pressure, int humidity
+@JsonKey(name: 'temp') double tempInCelcius, int pressure, int humidity
 });
 
 
@@ -401,9 +401,9 @@ class _$MainCopyWithImpl<$Res>
 
 /// Create a copy of Main
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? temp = null,Object? pressure = null,Object? humidity = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? tempInCelcius = null,Object? pressure = null,Object? humidity = null,}) {
   return _then(_self.copyWith(
-temp: null == temp ? _self.temp : temp // ignore: cast_nullable_to_non_nullable
+tempInCelcius: null == tempInCelcius ? _self.tempInCelcius : tempInCelcius // ignore: cast_nullable_to_non_nullable
 as double,pressure: null == pressure ? _self.pressure : pressure // ignore: cast_nullable_to_non_nullable
 as int,humidity: null == humidity ? _self.humidity : humidity // ignore: cast_nullable_to_non_nullable
 as int,
@@ -417,10 +417,10 @@ as int,
 @JsonSerializable()
 
 class _Main implements Main {
-   _Main({required this.temp, required this.pressure, required this.humidity});
+   _Main({@JsonKey(name: 'temp') required this.tempInCelcius, required this.pressure, required this.humidity});
   factory _Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
 
-@override final  double temp;
+@override@JsonKey(name: 'temp') final  double tempInCelcius;
 @override final  int pressure;
 @override final  int humidity;
 
@@ -437,16 +437,16 @@ Map<String, dynamic> toJson() {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Main&&(identical(other.temp, temp) || other.temp == temp)&&(identical(other.pressure, pressure) || other.pressure == pressure)&&(identical(other.humidity, humidity) || other.humidity == humidity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Main&&(identical(other.tempInCelcius, tempInCelcius) || other.tempInCelcius == tempInCelcius)&&(identical(other.pressure, pressure) || other.pressure == pressure)&&(identical(other.humidity, humidity) || other.humidity == humidity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,temp,pressure,humidity);
+int get hashCode => Object.hash(runtimeType,tempInCelcius,pressure,humidity);
 
 @override
 String toString() {
-  return 'Main(temp: $temp, pressure: $pressure, humidity: $humidity)';
+  return 'Main(tempInCelcius: $tempInCelcius, pressure: $pressure, humidity: $humidity)';
 }
 
 
@@ -457,7 +457,7 @@ abstract mixin class _$MainCopyWith<$Res> implements $MainCopyWith<$Res> {
   factory _$MainCopyWith(_Main value, $Res Function(_Main) _then) = __$MainCopyWithImpl;
 @override @useResult
 $Res call({
- double temp, int pressure, int humidity
+@JsonKey(name: 'temp') double tempInCelcius, int pressure, int humidity
 });
 
 
@@ -474,9 +474,9 @@ class __$MainCopyWithImpl<$Res>
 
 /// Create a copy of Main
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? temp = null,Object? pressure = null,Object? humidity = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? tempInCelcius = null,Object? pressure = null,Object? humidity = null,}) {
   return _then(_Main(
-temp: null == temp ? _self.temp : temp // ignore: cast_nullable_to_non_nullable
+tempInCelcius: null == tempInCelcius ? _self.tempInCelcius : tempInCelcius // ignore: cast_nullable_to_non_nullable
 as double,pressure: null == pressure ? _self.pressure : pressure // ignore: cast_nullable_to_non_nullable
 as int,humidity: null == humidity ? _self.humidity : humidity // ignore: cast_nullable_to_non_nullable
 as int,
