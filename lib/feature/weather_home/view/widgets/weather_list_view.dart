@@ -24,9 +24,7 @@ class WeatherListView extends ConsumerWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return InkWell(
-            onTap: () {
-              notifier.changeIndex(index);
-            },
+            onTap: () => notifier.changeIndex(index),
             child: Container(
               width: 140,
               decoration: BoxDecoration(
