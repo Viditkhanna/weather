@@ -14,7 +14,7 @@ void main() {
     notifier = WeatherHomeNotifier(weatherHomeRepository: repository);
     when(
       () => repository.getWeather(),
-    ).thenAnswer((_) async => WeatherFixture.weatherResponse.weatherReports);
+    ).thenAnswer((_) async => WeatherFixture.singleWeatherResponse.weatherReports);
   });
 
   test('WeatherHomeNotifier', () async {
@@ -22,12 +22,12 @@ void main() {
     verify(() => repository.getWeather()).called(1);
     expect(
       notifier.state.mainReport,
-      WeatherFixture.weatherResponse.weatherReports.first,
+      WeatherFixture.singleWeatherResponse.weatherReports.first,
     );
     expect(
       notifier.state.weatherLoadingState,
       WeatherLoadingState.success(
-        weatherReports: WeatherFixture.weatherResponse.weatherReports,
+        weatherReports: WeatherFixture.singleWeatherResponse.weatherReports,
       ),
     );
     expect(notifier.state.showTempInCelsius, true);
@@ -36,7 +36,7 @@ void main() {
     notifier.changeIndex(1);
     expect(
       notifier.state.mainReport,
-      WeatherFixture.weatherResponse.weatherReports[1],
+      WeatherFixture.singleWeatherResponse.weatherReports[1],
     );
   });
 }

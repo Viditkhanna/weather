@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:weather/core/data/api_client.dart';
+import 'package:weather/feature/common/widget/custom_network_image.dart';
 import 'package:weather/feature/weather_home/view/weather_home_screen.dart';
 import 'package:weather/feature/weather_home/view/widget/current_weather_view.dart';
 import 'package:weather/feature/weather_home/view/widget/weather_error_view.dart';
@@ -26,7 +27,7 @@ void main() {
         count: any(named: 'count'),
         unit: any(named: 'unit'),
       ),
-    ).thenAnswer((_) async => WeatherFixture.weatherResponse);
+    ).thenAnswer((_) async => WeatherFixture.multiWeatherResponse);
     await tester.pumpWidget(
       ProviderScope(
         overrides: [apiClientProvider.overrideWith((_) => client)],
@@ -49,6 +50,8 @@ void main() {
     expect(find.text('68 °F'), findsOneWidget);
 
     expect(find.byType(TextWithLabelView), findsNWidgets(3));
+    expect(find.byType(WeatherListItem), findsNWidgets(2));
+    expect(find.byType(CustomNetworkImage), findsNWidgets(3));
   });
 
   testWidgets('WeatherHomeScreen error', (tester) async {

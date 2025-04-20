@@ -18,7 +18,7 @@ void main() {
         count: any(named: 'count'),
         unit: any(named: 'unit'),
       ),
-    ).thenAnswer((_) async => WeatherFixture.weatherResponse);
+    ).thenAnswer((_) async => WeatherFixture.singleWeatherResponse);
   });
 
   test('WeatherHomeRepository', () async {
@@ -31,7 +31,7 @@ void main() {
       ),
     ).called(1);
 
-    expect(response, [WeatherFixture.weatherResponse.weatherReports.first]);
+    expect(response, [WeatherFixture.singleWeatherResponse.weatherReports.first]);
     expect(response.length, 1);
   });
 }
