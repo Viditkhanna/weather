@@ -2,12 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather/feature/weather_home/extension/weather_extension.dart';
-import 'package:weather/feature/weather_home/model/weather.dart';
 import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart';
 
 class CurrentWeatherView extends ConsumerWidget {
-  const CurrentWeatherView({super.key, required this.report});
-  final WeatherReport report;
+  const CurrentWeatherView({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,6 +14,13 @@ class CurrentWeatherView extends ConsumerWidget {
       weatherHomeNotifierProvider.select((e) => e.showTempInCelsius),
     );
     final notifier = ref.watch(weatherHomeNotifierProvider.notifier);
+    final report = ref.watch(
+      weatherHomeNotifierProvider.select((e) => e.mainReport),
+    );
+
+    if (report == null) {
+      return Text('Something went wrong!');
+    }
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

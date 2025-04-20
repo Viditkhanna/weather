@@ -5,6 +5,7 @@ sealed class WeatherHomeState with _$WeatherHomeState {
   const factory WeatherHomeState({
     @Default(WeatherLoadingStateIdle()) WeatherLoadingState weatherLoadingState,
     @Default(true) bool showTempInCelsius,
+    WeatherReport? mainReport,
   }) = _WeatherHomeState;
 }
 

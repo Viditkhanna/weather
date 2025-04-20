@@ -30,6 +30,7 @@ class WeatherHomeNotifier extends StateNotifier<WeatherHomeState> {
         weatherLoadingState: WeatherLoadingStateSuccess(
           weatherReports: weatherReports,
         ),
+        mainReport: weatherReports.firstOrNull,
       );
     } on Exception catch (e) {
       state = state.copyWith(weatherLoadingState: WeatherLoadingStateError(e));
@@ -38,5 +39,14 @@ class WeatherHomeNotifier extends StateNotifier<WeatherHomeState> {
 
   void changeTemperatureType() {
     state = state.copyWith(showTempInCelsius: !state.showTempInCelsius);
+  }
+
+  void changeIndex(int index) {
+    final state = this.state.weatherLoadingState;
+    if (state is! WeatherLoadingStateSuccess) {
+      return;
+    }
+
+    this.state = this.state.copyWith(mainReport: state.weatherReports[index]);
   }
 }

@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$WeatherHomeState {
 
- WeatherLoadingState get weatherLoadingState; bool get showTempInCelsius;
+ WeatherLoadingState get weatherLoadingState; bool get showTempInCelsius; WeatherReport? get mainReport;
 /// Create a copy of WeatherHomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -26,16 +26,16 @@ $WeatherHomeStateCopyWith<WeatherHomeState> get copyWith => _$WeatherHomeStateCo
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherHomeState&&(identical(other.weatherLoadingState, weatherLoadingState) || other.weatherLoadingState == weatherLoadingState)&&(identical(other.showTempInCelsius, showTempInCelsius) || other.showTempInCelsius == showTempInCelsius));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherHomeState&&(identical(other.weatherLoadingState, weatherLoadingState) || other.weatherLoadingState == weatherLoadingState)&&(identical(other.showTempInCelsius, showTempInCelsius) || other.showTempInCelsius == showTempInCelsius)&&(identical(other.mainReport, mainReport) || other.mainReport == mainReport));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,weatherLoadingState,showTempInCelsius);
+int get hashCode => Object.hash(runtimeType,weatherLoadingState,showTempInCelsius,mainReport);
 
 @override
 String toString() {
-  return 'WeatherHomeState(weatherLoadingState: $weatherLoadingState, showTempInCelsius: $showTempInCelsius)';
+  return 'WeatherHomeState(weatherLoadingState: $weatherLoadingState, showTempInCelsius: $showTempInCelsius, mainReport: $mainReport)';
 }
 
 
@@ -46,11 +46,11 @@ abstract mixin class $WeatherHomeStateCopyWith<$Res>  {
   factory $WeatherHomeStateCopyWith(WeatherHomeState value, $Res Function(WeatherHomeState) _then) = _$WeatherHomeStateCopyWithImpl;
 @useResult
 $Res call({
- WeatherLoadingState weatherLoadingState, bool showTempInCelsius
+ WeatherLoadingState weatherLoadingState, bool showTempInCelsius, WeatherReport? mainReport
 });
 
 
-$WeatherLoadingStateCopyWith<$Res> get weatherLoadingState;
+$WeatherLoadingStateCopyWith<$Res> get weatherLoadingState;$WeatherReportCopyWith<$Res>? get mainReport;
 
 }
 /// @nodoc
@@ -63,11 +63,12 @@ class _$WeatherHomeStateCopyWithImpl<$Res>
 
 /// Create a copy of WeatherHomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? weatherLoadingState = null,Object? showTempInCelsius = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? weatherLoadingState = null,Object? showTempInCelsius = null,Object? mainReport = freezed,}) {
   return _then(_self.copyWith(
 weatherLoadingState: null == weatherLoadingState ? _self.weatherLoadingState : weatherLoadingState // ignore: cast_nullable_to_non_nullable
 as WeatherLoadingState,showTempInCelsius: null == showTempInCelsius ? _self.showTempInCelsius : showTempInCelsius // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,mainReport: freezed == mainReport ? _self.mainReport : mainReport // ignore: cast_nullable_to_non_nullable
+as WeatherReport?,
   ));
 }
 /// Create a copy of WeatherHomeState
@@ -79,6 +80,18 @@ $WeatherLoadingStateCopyWith<$Res> get weatherLoadingState {
   return $WeatherLoadingStateCopyWith<$Res>(_self.weatherLoadingState, (value) {
     return _then(_self.copyWith(weatherLoadingState: value));
   });
+}/// Create a copy of WeatherHomeState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WeatherReportCopyWith<$Res>? get mainReport {
+    if (_self.mainReport == null) {
+    return null;
+  }
+
+  return $WeatherReportCopyWith<$Res>(_self.mainReport!, (value) {
+    return _then(_self.copyWith(mainReport: value));
+  });
 }
 }
 
@@ -87,11 +100,12 @@ $WeatherLoadingStateCopyWith<$Res> get weatherLoadingState {
 
 
 class _WeatherHomeState implements WeatherHomeState {
-  const _WeatherHomeState({this.weatherLoadingState = const WeatherLoadingStateIdle(), this.showTempInCelsius = true});
+  const _WeatherHomeState({this.weatherLoadingState = const WeatherLoadingStateIdle(), this.showTempInCelsius = true, this.mainReport});
   
 
 @override@JsonKey() final  WeatherLoadingState weatherLoadingState;
 @override@JsonKey() final  bool showTempInCelsius;
+@override final  WeatherReport? mainReport;
 
 /// Create a copy of WeatherHomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -103,16 +117,16 @@ _$WeatherHomeStateCopyWith<_WeatherHomeState> get copyWith => __$WeatherHomeStat
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherHomeState&&(identical(other.weatherLoadingState, weatherLoadingState) || other.weatherLoadingState == weatherLoadingState)&&(identical(other.showTempInCelsius, showTempInCelsius) || other.showTempInCelsius == showTempInCelsius));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherHomeState&&(identical(other.weatherLoadingState, weatherLoadingState) || other.weatherLoadingState == weatherLoadingState)&&(identical(other.showTempInCelsius, showTempInCelsius) || other.showTempInCelsius == showTempInCelsius)&&(identical(other.mainReport, mainReport) || other.mainReport == mainReport));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,weatherLoadingState,showTempInCelsius);
+int get hashCode => Object.hash(runtimeType,weatherLoadingState,showTempInCelsius,mainReport);
 
 @override
 String toString() {
-  return 'WeatherHomeState(weatherLoadingState: $weatherLoadingState, showTempInCelsius: $showTempInCelsius)';
+  return 'WeatherHomeState(weatherLoadingState: $weatherLoadingState, showTempInCelsius: $showTempInCelsius, mainReport: $mainReport)';
 }
 
 
@@ -123,11 +137,11 @@ abstract mixin class _$WeatherHomeStateCopyWith<$Res> implements $WeatherHomeSta
   factory _$WeatherHomeStateCopyWith(_WeatherHomeState value, $Res Function(_WeatherHomeState) _then) = __$WeatherHomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- WeatherLoadingState weatherLoadingState, bool showTempInCelsius
+ WeatherLoadingState weatherLoadingState, bool showTempInCelsius, WeatherReport? mainReport
 });
 
 
-@override $WeatherLoadingStateCopyWith<$Res> get weatherLoadingState;
+@override $WeatherLoadingStateCopyWith<$Res> get weatherLoadingState;@override $WeatherReportCopyWith<$Res>? get mainReport;
 
 }
 /// @nodoc
@@ -140,11 +154,12 @@ class __$WeatherHomeStateCopyWithImpl<$Res>
 
 /// Create a copy of WeatherHomeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? weatherLoadingState = null,Object? showTempInCelsius = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? weatherLoadingState = null,Object? showTempInCelsius = null,Object? mainReport = freezed,}) {
   return _then(_WeatherHomeState(
 weatherLoadingState: null == weatherLoadingState ? _self.weatherLoadingState : weatherLoadingState // ignore: cast_nullable_to_non_nullable
 as WeatherLoadingState,showTempInCelsius: null == showTempInCelsius ? _self.showTempInCelsius : showTempInCelsius // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,mainReport: freezed == mainReport ? _self.mainReport : mainReport // ignore: cast_nullable_to_non_nullable
+as WeatherReport?,
   ));
 }
 
@@ -156,6 +171,18 @@ $WeatherLoadingStateCopyWith<$Res> get weatherLoadingState {
   
   return $WeatherLoadingStateCopyWith<$Res>(_self.weatherLoadingState, (value) {
     return _then(_self.copyWith(weatherLoadingState: value));
+  });
+}/// Create a copy of WeatherHomeState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$WeatherReportCopyWith<$Res>? get mainReport {
+    if (_self.mainReport == null) {
+    return null;
+  }
+
+  return $WeatherReportCopyWith<$Res>(_self.mainReport!, (value) {
+    return _then(_self.copyWith(mainReport: value));
   });
 }
 }
