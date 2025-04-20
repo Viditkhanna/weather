@@ -16,6 +16,19 @@ class WeatherFixture {
         wind: Wind(speed: 89),
         dateTime: DateTime(2025, 12, 12),
       ),
+      WeatherReport(
+        main: Main(tempInCelcius: 20, pressure: 20, humidity: 20),
+        weatherDetails: [
+          WeatherDetail(
+            id: 12,
+            main: 'main',
+            description: 'description',
+            icon: 'icon',
+          ),
+        ],
+        wind: Wind(speed: 89),
+        dateTime: DateTime(2025, 12, 12),
+      ),
     ],
   );
 }
