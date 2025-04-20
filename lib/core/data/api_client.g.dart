@@ -28,7 +28,7 @@ class _ApiClient implements ApiClient {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'q': city,
-      r'unit': unit,
+      r'units': unit,
       r'cnt': count,
     };
     final _headers = <String, dynamic>{};
