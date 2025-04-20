@@ -6,13 +6,13 @@ import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart
 import 'package:weather/feature/weather_home/view/widget/current_weather_view.dart';
 import 'package:weather/feature/weather_home/view/widget/weather_list_view.dart';
 
-class WeatherHomeView extends ConsumerWidget {
+class WeatherHomeView extends StatelessWidget {
   const WeatherHomeView({super.key, required this.reports});
 
   final List<WeatherReport> reports;
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     if (reports.isEmpty) {
       return Scaffold(body: Center(child: Text('Something went wrong!')));
     }
