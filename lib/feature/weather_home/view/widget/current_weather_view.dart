@@ -36,7 +36,7 @@ class CurrentWeatherView extends ConsumerWidget {
                   IconSize.medium,
                 ) ??
                 '',
-            errorIconSize: 60,
+            altIconSize: 60,
           ),
         ),
         Center(

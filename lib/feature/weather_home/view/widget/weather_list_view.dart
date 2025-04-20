@@ -54,7 +54,7 @@ class WeatherListItem extends ConsumerWidget {
                     IconSize.small,
                   ) ??
                   '',
-              errorIconSize: 32,
+              altIconSize: 32,
             ),
             Text(
               '${report.main.tempInCelcius.toInt()} °C / '
