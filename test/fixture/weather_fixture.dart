@@ -8,7 +8,7 @@ class WeatherFixture {
         weatherDetails: [
           WeatherDetail(
             id: 12,
-            main: 'main',
+            main: 'Raining',
             description: 'description',
             icon: 'icon',
           ),

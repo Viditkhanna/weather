@@ -61,24 +61,24 @@ class CurrentWeatherView extends ConsumerWidget {
           ),
         ),
         SizedBox(height: 12),
-        _TextWithLabelView(
+        TextWithLabelView(
           label: 'Humidity: ',
           text: '${report.main.humidity}%',
         ),
         SizedBox(height: 4),
-        _TextWithLabelView(
+        TextWithLabelView(
           label: 'Pressure: ',
           text: '${report.main.pressure} hpa',
         ),
         SizedBox(height: 4),
-        _TextWithLabelView(label: 'Wind: ', text: '${report.wind.speed} km/h'),
+        TextWithLabelView(label: 'Wind: ', text: '${report.wind.speed} km/h'),
       ],
     );
   }
 }
 
-class _TextWithLabelView extends StatelessWidget {
-  const _TextWithLabelView({required this.label, required this.text});
+class TextWithLabelView extends StatelessWidget {
+  const TextWithLabelView({super.key, required this.label, required this.text});
   final String label;
   final String text;
 
