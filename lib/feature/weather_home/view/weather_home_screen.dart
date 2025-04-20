@@ -22,7 +22,20 @@ class WeatherHomeScreen extends ConsumerWidget {
         ),
         WeatherLoadingStateSuccess(weatherReports: var reports) =>
           WeatherHomeView(reports: reports),
-        WeatherLoadingStateError() => Scaffold(body: Text('Error')),
+        WeatherLoadingStateError() => Scaffold(
+          body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Something Went Wrong!'),
+                TextButton(
+                  onPressed: notifier.fetchWeather,
+                  child: Text('Retry'),
+                ),
+              ],
+            ),
+          ),
+        ),
       },
     );
   }
