@@ -351,7 +351,7 @@ $WindCopyWith<$Res> get wind {
 /// @nodoc
 mixin _$Main {
 
-@JsonKey(name: 'temp') double get tempInCelcius; int get pressure; int get humidity;
+ double get tempInFahrenheit;@JsonKey(name: 'temp') double get tempInCelcius; int get pressure; int get humidity;
 /// Create a copy of Main
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -364,16 +364,16 @@ $MainCopyWith<Main> get copyWith => _$MainCopyWithImpl<Main>(this as Main, _$ide
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is Main&&(identical(other.tempInCelcius, tempInCelcius) || other.tempInCelcius == tempInCelcius)&&(identical(other.pressure, pressure) || other.pressure == pressure)&&(identical(other.humidity, humidity) || other.humidity == humidity));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Main&&(identical(other.tempInFahrenheit, tempInFahrenheit) || other.tempInFahrenheit == tempInFahrenheit)&&(identical(other.tempInCelcius, tempInCelcius) || other.tempInCelcius == tempInCelcius)&&(identical(other.pressure, pressure) || other.pressure == pressure)&&(identical(other.humidity, humidity) || other.humidity == humidity));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
 @override
-int get hashCode => Object.hash(runtimeType,tempInCelcius,pressure,humidity);
+int get hashCode => Object.hash(runtimeType,tempInFahrenheit,tempInCelcius,pressure,humidity);
 
 @override
 String toString() {
-  return 'Main(tempInCelcius: $tempInCelcius, pressure: $pressure, humidity: $humidity)';
+  return 'Main(tempInFahrenheit: $tempInFahrenheit, tempInCelcius: $tempInCelcius, pressure: $pressure, humidity: $humidity)';
 }
 
 
@@ -416,8 +416,8 @@ as int,
 /// @nodoc
 @JsonSerializable()
 
-class _Main implements Main {
-   _Main({@JsonKey(name: 'temp') required this.tempInCelcius, required this.pressure, required this.humidity});
+class _Main extends Main {
+   _Main({@JsonKey(name: 'temp') required this.tempInCelcius, required this.pressure, required this.humidity}): super._();
   factory _Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
 
 @override@JsonKey(name: 'temp') final  double tempInCelcius;

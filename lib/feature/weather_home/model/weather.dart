@@ -44,6 +44,10 @@ sealed class Main with _$Main {
   }) = _Main;
 
   factory Main.fromJson(Map<String, dynamic> json) => _$MainFromJson(json);
+  Main._();
+
+  @override
+  late final double tempInFahrenheit = (tempInCelcius * 9 / 5) + 32;
 }
 
 @freezed
