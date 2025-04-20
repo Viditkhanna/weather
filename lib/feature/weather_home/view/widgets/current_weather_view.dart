@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:weather/feature/common/widgets/custom_network_image.dart';
 import 'package:weather/feature/weather_home/extension/weather_extension.dart';
 import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart';
 
@@ -30,13 +31,13 @@ class CurrentWeatherView extends ConsumerWidget {
           style: textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold),
         ),
         Center(
-          child: CachedNetworkImage(
-            imageUrl:
+          child: CustomNetworkImage(
+            url:
                 report.weatherDetails.firstOrNull?.getIconUrl(
                   IconSize.medium,
                 ) ??
                 '',
-            errorWidget: (_, _, _) => Container(),
+            errorIconSize: 60,
           ),
         ),
         Center(
@@ -54,7 +55,7 @@ class CurrentWeatherView extends ConsumerWidget {
                   style: textTheme.displayLarge,
                 ),
               IconButton(
-                onPressed: () => notifier.changeTemperatureType(),
+                onPressed: notifier.changeTemperatureType,
                 icon: Icon(Icons.change_circle),
               ),
             ],
