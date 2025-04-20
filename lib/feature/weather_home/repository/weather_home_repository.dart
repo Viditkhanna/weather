@@ -14,12 +14,12 @@ class WeatherHomeRepository {
     : _apiClient = apiClient;
 
   /// Get Weather details from the API and remove multiple
-  /// responses for single day
+  /// reports for single day
   Future<List<WeatherReport>> getWeather() async {
     final weatherReports = <WeatherReport>[];
-    final weatherResponse = await _apiClient.getWeather();
+    final weather = await _apiClient.getWeather();
 
-    for (var weatherItem in weatherResponse.weatherReports) {
+    for (var weatherItem in weather.weatherReports) {
       if (!weatherReports.any(
         (e) => DateUtils.isSameDay(e.dateTime, weatherItem.dateTime),
       )) {

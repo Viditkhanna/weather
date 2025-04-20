@@ -14,22 +14,22 @@ part of 'weather.dart';
 T _$identity<T>(T value) => value;
 
 /// @nodoc
-mixin _$WeatherResponse {
+mixin _$Weather {
 
 @JsonKey(name: 'list') List<WeatherReport> get weatherReports;
-/// Create a copy of WeatherResponse
+/// Create a copy of Weather
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$WeatherResponseCopyWith<WeatherResponse> get copyWith => _$WeatherResponseCopyWithImpl<WeatherResponse>(this as WeatherResponse, _$identity);
+$WeatherCopyWith<Weather> get copyWith => _$WeatherCopyWithImpl<Weather>(this as Weather, _$identity);
 
-  /// Serializes this WeatherResponse to a JSON map.
+  /// Serializes this Weather to a JSON map.
   Map<String, dynamic> toJson();
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is WeatherResponse&&const DeepCollectionEquality().equals(other.weatherReports, weatherReports));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is Weather&&const DeepCollectionEquality().equals(other.weatherReports, weatherReports));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -38,15 +38,15 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'WeatherResponse(weatherReports: $weatherReports)';
+  return 'Weather(weatherReports: $weatherReports)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $WeatherResponseCopyWith<$Res>  {
-  factory $WeatherResponseCopyWith(WeatherResponse value, $Res Function(WeatherResponse) _then) = _$WeatherResponseCopyWithImpl;
+abstract mixin class $WeatherCopyWith<$Res>  {
+  factory $WeatherCopyWith(Weather value, $Res Function(Weather) _then) = _$WeatherCopyWithImpl;
 @useResult
 $Res call({
 @JsonKey(name: 'list') List<WeatherReport> weatherReports
@@ -57,14 +57,14 @@ $Res call({
 
 }
 /// @nodoc
-class _$WeatherResponseCopyWithImpl<$Res>
-    implements $WeatherResponseCopyWith<$Res> {
-  _$WeatherResponseCopyWithImpl(this._self, this._then);
+class _$WeatherCopyWithImpl<$Res>
+    implements $WeatherCopyWith<$Res> {
+  _$WeatherCopyWithImpl(this._self, this._then);
 
-  final WeatherResponse _self;
-  final $Res Function(WeatherResponse) _then;
+  final Weather _self;
+  final $Res Function(Weather) _then;
 
-/// Create a copy of WeatherResponse
+/// Create a copy of Weather
 /// with the given fields replaced by the non-null parameter values.
 @pragma('vm:prefer-inline') @override $Res call({Object? weatherReports = null,}) {
   return _then(_self.copyWith(
@@ -79,9 +79,9 @@ as List<WeatherReport>,
 /// @nodoc
 @JsonSerializable()
 
-class _WeatherResponse implements WeatherResponse {
-   _WeatherResponse({@JsonKey(name: 'list') required final  List<WeatherReport> weatherReports}): _weatherReports = weatherReports;
-  factory _WeatherResponse.fromJson(Map<String, dynamic> json) => _$WeatherResponseFromJson(json);
+class _Weather implements Weather {
+   _Weather({@JsonKey(name: 'list') required final  List<WeatherReport> weatherReports}): _weatherReports = weatherReports;
+  factory _Weather.fromJson(Map<String, dynamic> json) => _$WeatherFromJson(json);
 
  final  List<WeatherReport> _weatherReports;
 @override@JsonKey(name: 'list') List<WeatherReport> get weatherReports {
@@ -91,20 +91,20 @@ class _WeatherResponse implements WeatherResponse {
 }
 
 
-/// Create a copy of WeatherResponse
+/// Create a copy of Weather
 /// with the given fields replaced by the non-null parameter values.
 @override @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-_$WeatherResponseCopyWith<_WeatherResponse> get copyWith => __$WeatherResponseCopyWithImpl<_WeatherResponse>(this, _$identity);
+_$WeatherCopyWith<_Weather> get copyWith => __$WeatherCopyWithImpl<_Weather>(this, _$identity);
 
 @override
 Map<String, dynamic> toJson() {
-  return _$WeatherResponseToJson(this, );
+  return _$WeatherToJson(this, );
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _WeatherResponse&&const DeepCollectionEquality().equals(other._weatherReports, _weatherReports));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _Weather&&const DeepCollectionEquality().equals(other._weatherReports, _weatherReports));
 }
 
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -113,15 +113,15 @@ int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(
 
 @override
 String toString() {
-  return 'WeatherResponse(weatherReports: $weatherReports)';
+  return 'Weather(weatherReports: $weatherReports)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class _$WeatherResponseCopyWith<$Res> implements $WeatherResponseCopyWith<$Res> {
-  factory _$WeatherResponseCopyWith(_WeatherResponse value, $Res Function(_WeatherResponse) _then) = __$WeatherResponseCopyWithImpl;
+abstract mixin class _$WeatherCopyWith<$Res> implements $WeatherCopyWith<$Res> {
+  factory _$WeatherCopyWith(_Weather value, $Res Function(_Weather) _then) = __$WeatherCopyWithImpl;
 @override @useResult
 $Res call({
 @JsonKey(name: 'list') List<WeatherReport> weatherReports
@@ -132,17 +132,17 @@ $Res call({
 
 }
 /// @nodoc
-class __$WeatherResponseCopyWithImpl<$Res>
-    implements _$WeatherResponseCopyWith<$Res> {
-  __$WeatherResponseCopyWithImpl(this._self, this._then);
+class __$WeatherCopyWithImpl<$Res>
+    implements _$WeatherCopyWith<$Res> {
+  __$WeatherCopyWithImpl(this._self, this._then);
 
-  final _WeatherResponse _self;
-  final $Res Function(_WeatherResponse) _then;
+  final _Weather _self;
+  final $Res Function(_Weather) _then;
 
-/// Create a copy of WeatherResponse
+/// Create a copy of Weather
 /// with the given fields replaced by the non-null parameter values.
 @override @pragma('vm:prefer-inline') $Res call({Object? weatherReports = null,}) {
-  return _then(_WeatherResponse(
+  return _then(_Weather(
 weatherReports: null == weatherReports ? _self._weatherReports : weatherReports // ignore: cast_nullable_to_non_nullable
 as List<WeatherReport>,
   ));

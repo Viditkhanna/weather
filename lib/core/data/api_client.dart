@@ -23,7 +23,7 @@ abstract class ApiClient {
   factory ApiClient(Dio dio) = _ApiClient;
 
   @GET('/data/2.5/forecast')
-  Future<WeatherResponse> getWeather({
+  Future<Weather> getWeather({
     @Query('q') String city = 'Berlin',
     @Query('units') String unit = 'metric',
 

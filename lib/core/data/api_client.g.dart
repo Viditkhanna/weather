@@ -20,7 +20,7 @@ class _ApiClient implements ApiClient {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<WeatherResponse> getWeather({
+  Future<Weather> getWeather({
     String city = 'Berlin',
     String unit = 'metric',
     int count = Constant.daysCountToDisplay * 8,
@@ -33,7 +33,7 @@ class _ApiClient implements ApiClient {
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<WeatherResponse>(
+    final _options = _setStreamType<Weather>(
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
@@ -44,9 +44,9 @@ class _ApiClient implements ApiClient {
           .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
     );
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late WeatherResponse _value;
+    late Weather _value;
     try {
-      _value = WeatherResponse.fromJson(_result.data!);
+      _value = Weather.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

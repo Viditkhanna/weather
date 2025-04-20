@@ -3,7 +3,7 @@ import 'package:weather/feature/weather_home/model/weather.dart';
 class WeatherFixture {
   // For testing filtration, be made to single in repository
   // class because of same date-time
-  static final singleWeatherResponse = WeatherResponse(
+  static final singleWeatherResponse = Weather(
     weatherReports: [
       WeatherReport(
         main: Main(tempInCelcius: 20, pressure: 20, humidity: 20),
@@ -34,7 +34,7 @@ class WeatherFixture {
     ],
   );
 
-  static final multiWeatherResponse = WeatherResponse(
+  static final multiWeatherResponse = Weather(
     weatherReports: [
       WeatherReport(
         main: Main(tempInCelcius: 20, pressure: 20, humidity: 20),

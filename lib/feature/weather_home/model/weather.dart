@@ -7,13 +7,13 @@ part 'weather.freezed.dart';
 part 'weather.g.dart';
 
 @freezed
-sealed class WeatherResponse with _$WeatherResponse {
-  factory WeatherResponse({
+sealed class Weather with _$Weather {
+  factory Weather({
     @JsonKey(name: 'list') required List<WeatherReport> weatherReports,
-  }) = _WeatherResponse;
+  }) = _Weather;
 
-  factory WeatherResponse.fromJson(Map<String, dynamic> json) =>
-      _$WeatherResponseFromJson(json);
+  factory Weather.fromJson(Map<String, dynamic> json) =>
+      _$WeatherFromJson(json);
 }
 
 @freezed
