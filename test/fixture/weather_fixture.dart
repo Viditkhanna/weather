@@ -21,9 +21,9 @@ class WeatherFixture {
         weatherDetails: [
           WeatherDetail(
             id: 12,
-            main: 'main',
-            description: 'description',
-            icon: 'icon',
+            main: 'main 2',
+            description: 'description 2',
+            icon: 'icon 2',
           ),
         ],
         wind: Wind(speed: 89),
