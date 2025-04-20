@@ -36,16 +36,12 @@ class WeatherHomeView extends ConsumerWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.all(20),
-        child: Builder(
-          builder: (context) {
-            return ListView(
-              children: [
-                CurrentWeatherView(),
-                SizedBox(height: 20),
-                WeatherListView(reports: reports),
-              ],
-            );
-          },
+        child: ListView(
+          children: [
+            CurrentWeatherView(),
+            SizedBox(height: 20),
+            WeatherListView(reports: reports),
+          ],
         ),
       ),
     );

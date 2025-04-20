@@ -23,6 +23,8 @@ class WeatherListView extends ConsumerWidget {
         separatorBuilder: (_, _) => SizedBox(width: 16),
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
+          final report = reports[index];
+
           return InkWell(
             onTap: () => notifier.changeIndex(index),
             child: Container(
@@ -33,18 +35,18 @@ class WeatherListView extends ConsumerWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(DateFormat.E().format(reports[index].dateTime)),
+                  Text(DateFormat.E().format(report.dateTime)),
                   CustomNetworkImage(
                     url:
-                        reports[index].weatherDetails.firstOrNull?.getIconUrl(
+                        report.weatherDetails.firstOrNull?.getIconUrl(
                           IconSize.small,
                         ) ??
                         '',
                     errorIconSize: 32,
                   ),
                   Text(
-                    '${reports[index].main.tempInCelcius.toInt()} °C / '
-                    '${reports[index].main.tempInFahrenheit.toInt()} °F',
+                    '${report.main.tempInCelcius.toInt()} °C / '
+                    '${report.main.tempInFahrenheit.toInt()} °F',
                   ),
                 ],
               ),
