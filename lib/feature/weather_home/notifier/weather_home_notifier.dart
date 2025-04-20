@@ -22,7 +22,9 @@ class WeatherHomeNotifier extends StateNotifier<WeatherHomeState> {
     : _weatherHomeRepository = weatherHomeRepository,
       super(WeatherHomeState());
 
-  Future<void> _init() async {
+  Future<void> _init() async => await fetchWeather();
+
+  Future<void> fetchWeather() async {
     try {
       state = state.copyWith(weatherLoadingState: WeatherLoadingStateLoading());
       final weatherReports = await _weatherHomeRepository.getWeather();

@@ -11,15 +11,19 @@ class WeatherHomeScreen extends ConsumerWidget {
     final state = ref.watch(
       weatherHomeNotifierProvider.select((e) => e.weatherLoadingState),
     );
+    final notifier = ref.watch(weatherHomeNotifierProvider.notifier);
 
-    return switch (state) {
-      WeatherLoadingStateIdle() => Scaffold(body: SizedBox.shrink()),
-      WeatherLoadingStateLoading() => Scaffold(
-        body: Center(child: CircularProgressIndicator()),
-      ),
-      WeatherLoadingStateSuccess(weatherReports: var reports) =>
-        WeatherHomeView(reports: reports),
-      WeatherLoadingStateError() => Scaffold(body: Text('Error')),
-    };
+    return RefreshIndicator(
+      onRefresh: notifier.fetchWeather,
+      child: switch (state) {
+        WeatherLoadingStateIdle() => Scaffold(body: SizedBox.shrink()),
+        WeatherLoadingStateLoading() => Scaffold(
+          body: Center(child: CircularProgressIndicator()),
+        ),
+        WeatherLoadingStateSuccess(weatherReports: var reports) =>
+          WeatherHomeView(reports: reports),
+        WeatherLoadingStateError() => Scaffold(body: Text('Error')),
+      },
+    );
   }
 }
