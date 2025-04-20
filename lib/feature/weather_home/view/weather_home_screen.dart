@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart';
+import 'package:weather/feature/weather_home/view/widget/weather_error_view.dart';
 import 'package:weather/feature/weather_home/view/widget/weather_home_view.dart';
 
 class WeatherHomeScreen extends ConsumerWidget {
@@ -20,20 +21,7 @@ class WeatherHomeScreen extends ConsumerWidget {
         WeatherLoadingStateLoading() => Scaffold(
           body: Center(child: CircularProgressIndicator()),
         ),
-        WeatherLoadingStateError() => Scaffold(
-          body: Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Something Went Wrong!'),
-                TextButton(
-                  onPressed: notifier.fetchWeather,
-                  child: Text('Retry'),
-                ),
-              ],
-            ),
-          ),
-        ),
+        WeatherLoadingStateError() => WeatherErrorView(),
         WeatherLoadingStateSuccess(weatherReports: var reports) =>
           WeatherHomeView(reports: reports),
       },
