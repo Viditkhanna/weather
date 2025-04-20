@@ -1,7 +1,7 @@
 // ignore_for_file: invalid_annotation_target
 
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:weather/core/converters/date_time_converter.dart';
+import 'package:weather/core/converter/date_time_converter.dart';
 
 part 'weather.freezed.dart';
 part 'weather.g.dart';
