@@ -8,13 +8,14 @@ final weatherHomeRepositoryProvider = Provider.autoDispose((ref) {
 });
 
 class WeatherHomeRepository {
-  final ApiClient apiClient;
+  final ApiClient _apiClient;
 
-  WeatherHomeRepository({required this.apiClient});
+  WeatherHomeRepository({required ApiClient apiClient})
+    : _apiClient = apiClient;
 
   Future<List<WeatherReport>> getWeather() async {
     final weatherReports = <WeatherReport>[];
-    final weatherResponse = await apiClient.getWeather();
+    final weatherResponse = await _apiClient.getWeather();
 
     for (var weatherItem in weatherResponse.weatherReports) {
       if (!weatherReports.any(

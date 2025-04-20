@@ -9,12 +9,13 @@ final weatherHomeNotifierProvider = Provider.autoDispose((ref) {
 });
 
 class WeatherHomeNotifier {
-  final WeatherHomeRepository weatherHomeRepository;
+  final WeatherHomeRepository _weatherHomeRepository;
 
-  WeatherHomeNotifier({required this.weatherHomeRepository});
+  WeatherHomeNotifier({required WeatherHomeRepository weatherHomeRepository})
+    : _weatherHomeRepository = weatherHomeRepository;
 
   Future<List<WeatherReport>> _init() async {
-    final weatherReports = await weatherHomeRepository.getWeather();
+    final weatherReports = await _weatherHomeRepository.getWeather();
     return weatherReports;
   }
 }

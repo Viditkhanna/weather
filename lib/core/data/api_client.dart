@@ -18,7 +18,7 @@ final apiClientProvider = Provider((ref) {
   return ApiClient(dio);
 });
 
-@RestApi(baseUrl: 'https://api.openweathermap.org')
+@RestApi(baseUrl: Constant.baseUrl)
 abstract class ApiClient {
   factory ApiClient(Dio dio) = _ApiClient;
 
