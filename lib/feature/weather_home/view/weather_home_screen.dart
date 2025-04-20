@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart';
-import 'package:weather/feature/weather_home/view/widgets/weather_home_view.dart';
+import 'package:weather/feature/weather_home/view/widget/weather_home_view.dart';
 
 class WeatherHomeScreen extends ConsumerWidget {
   const WeatherHomeScreen({super.key});

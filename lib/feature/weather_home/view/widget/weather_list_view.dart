@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:weather/feature/common/widgets/custom_network_image.dart';
+import 'package:weather/feature/common/widget/custom_network_image.dart';
 import 'package:weather/feature/weather_home/extension/weather_extension.dart';
 import 'package:weather/feature/weather_home/model/weather.dart';
 import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart';

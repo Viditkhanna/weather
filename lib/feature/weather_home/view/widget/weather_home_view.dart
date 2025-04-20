@@ -3,8 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
 import 'package:weather/feature/weather_home/model/weather.dart';
 import 'package:weather/feature/weather_home/notifier/weather_home_notifier.dart';
-import 'package:weather/feature/weather_home/view/widgets/current_weather_view.dart';
-import 'package:weather/feature/weather_home/view/widgets/weather_list_view.dart';
+import 'package:weather/feature/weather_home/view/widget/current_weather_view.dart';
+import 'package:weather/feature/weather_home/view/widget/weather_list_view.dart';
 
 class WeatherHomeView extends ConsumerWidget {
   const WeatherHomeView({super.key, required this.reports});
