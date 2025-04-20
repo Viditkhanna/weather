@@ -12,9 +12,9 @@ void main() {
   setUp(() {
     repository = MockWeatherHomeRepository();
     notifier = WeatherHomeNotifier(weatherHomeRepository: repository);
-    when(
-      () => repository.getWeather(),
-    ).thenAnswer((_) async => WeatherFixture.singleWeatherResponse.weatherReports);
+    when(() => repository.getWeather()).thenAnswer(
+      (_) async => WeatherFixture.singleWeatherResponse.weatherReports,
+    );
   });
 
   test('WeatherHomeNotifier', () async {

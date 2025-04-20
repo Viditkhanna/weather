@@ -31,7 +31,9 @@ void main() {
       ),
     ).called(1);
 
-    expect(response, [WeatherFixture.singleWeatherResponse.weatherReports.first]);
+    expect(response, [
+      WeatherFixture.singleWeatherResponse.weatherReports.first,
+    ]);
     expect(response.length, 1);
   });
 }
