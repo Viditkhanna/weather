@@ -8,9 +8,6 @@ part of 'weather.dart';
 
 _WeatherResponse _$WeatherResponseFromJson(Map<String, dynamic> json) =>
     _WeatherResponse(
-      cod: json['cod'] as String,
-      message: (json['message'] as num).toInt(),
-      cnt: (json['cnt'] as num).toInt(),
       weatherReports:
           (json['list'] as List<dynamic>)
               .map((e) => WeatherReport.fromJson(e as Map<String, dynamic>))
@@ -19,15 +16,11 @@ _WeatherResponse _$WeatherResponseFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$WeatherResponseToJson(_WeatherResponse instance) =>
     <String, dynamic>{
-      'cod': instance.cod,
-      'message': instance.message,
-      'cnt': instance.cnt,
       'list': instance.weatherReports.map((e) => e.toJson()).toList(),
     };
 
 _WeatherReport _$WeatherReportFromJson(Map<String, dynamic> json) =>
     _WeatherReport(
-      dt: (json['dt'] as num).toInt(),
       main: Main.fromJson(json['main'] as Map<String, dynamic>),
       weatherDetails:
           (json['weather'] as List<dynamic>)
@@ -41,7 +34,6 @@ _WeatherReport _$WeatherReportFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$WeatherReportToJson(_WeatherReport instance) =>
     <String, dynamic>{
-      'dt': instance.dt,
       'main': instance.main.toJson(),
       'weather': instance.weatherDetails.map((e) => e.toJson()).toList(),
       'wind': instance.wind.toJson(),

@@ -7,13 +7,11 @@ part 'weather_home_notifier.freezed.dart';
 part 'weather_home_state.dart';
 
 final weatherHomeNotifierProvider =
-    StateNotifierProvider.autoDispose<WeatherHomeNotifier, WeatherHomeState>((
-      ref,
-    ) {
-      return WeatherHomeNotifier(
+    StateNotifierProvider.autoDispose<WeatherHomeNotifier, WeatherHomeState>(
+      (ref) => WeatherHomeNotifier(
         weatherHomeRepository: ref.watch(weatherHomeRepositoryProvider),
-      ).._init();
-    });
+      ).._init(),
+    );
 
 class WeatherHomeNotifier extends StateNotifier<WeatherHomeState> {
   final WeatherHomeRepository _weatherHomeRepository;
@@ -27,7 +25,9 @@ class WeatherHomeNotifier extends StateNotifier<WeatherHomeState> {
   Future<void> fetchWeather() async {
     try {
       state = state.copyWith(weatherLoadingState: WeatherLoadingStateLoading());
+
       final weatherReports = await _weatherHomeRepository.getWeather();
+
       state = state.copyWith(
         weatherLoadingState: WeatherLoadingStateSuccess(
           weatherReports: weatherReports,

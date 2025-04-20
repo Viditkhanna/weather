@@ -9,9 +9,6 @@ part 'weather.g.dart';
 @freezed
 sealed class WeatherResponse with _$WeatherResponse {
   factory WeatherResponse({
-    required String cod,
-    required int message,
-    required int cnt,
     @JsonKey(name: 'list') required List<WeatherReport> weatherReports,
   }) = _WeatherResponse;
 
@@ -22,7 +19,6 @@ sealed class WeatherResponse with _$WeatherResponse {
 @freezed
 sealed class WeatherReport with _$WeatherReport {
   factory WeatherReport({
-    required int dt,
     required Main main,
     @JsonKey(name: 'weather') required List<WeatherDetail> weatherDetails,
     required Wind wind,

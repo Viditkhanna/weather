@@ -13,6 +13,8 @@ class WeatherHomeRepository {
   WeatherHomeRepository({required ApiClient apiClient})
     : _apiClient = apiClient;
 
+  /// Get Weather details from the API and remove multiple
+  /// responses for single day
   Future<List<WeatherReport>> getWeather() async {
     final weatherReports = <WeatherReport>[];
     final weatherResponse = await _apiClient.getWeather();

@@ -26,6 +26,7 @@ abstract class ApiClient {
   Future<WeatherResponse> getWeather({
     @Query('q') String city = 'Berlin',
     @Query('units') String unit = 'metric',
+
     // max responses for one day = 8
     @Query('cnt') int count = Constant.daysCountToDisplay * 8,
   });
