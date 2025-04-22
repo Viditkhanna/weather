@@ -1,6 +1,6 @@
 # weather
 
-Flaconi assignment
+ assignment
 
 ## Getting Started
 
